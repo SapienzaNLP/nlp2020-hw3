@@ -63,16 +63,24 @@ conda activate nlp2020-hw3
 pip install -r requirements.txt
 ```
 
+## Data
+
+For this homework, as far as the data are concerned, we will we using the just released Hugging Face's **nlp** library. We 
+have already written some utility functions that wrap this library for you and allow you to easily fetch training, validation
+and test set (in *utils.py*).
+
 ## Run
 
 *test.sh* is a simple bash script. To run it:
 
 ```
 conda activate nlp2020-hw3
-bash test.sh data/dev.json
+bash test.sh <dataset-option>
 ```
 
-Actually, you can replace *data/dev.json* to point to a different file, as far as the target file has the same format.
+As the dataset option, you can choose *dev* or *test*:
+* *dev*: you will evaluate your model on the English-only validation dataset of MultiNLI (*mnli* -> *validation mismatched*)
+* *test*: you will evaluate your model on the multilingual test set of XNLI (*xnli* -> *test*)
 
 If you hadn't changed *hw3/stud/model.py* yet when you run test.sh, the scores you just saw describe how a random baseline
 behaves. To have *test.sh* evaluate your model, follow the instructions in the slides.
