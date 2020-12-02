@@ -1,7 +1,5 @@
 from typing import List
 
-from nlp import DownloadConfig
-
 from stud.implementation import build_model
 
 

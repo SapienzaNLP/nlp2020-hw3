@@ -2,7 +2,7 @@ import logging
 logging.basicConfig(format='%(levelname)s: %(message)s', level=logging.INFO)
 
 import argparse
-import nlp
+import datasets
 import requests
 import time
 
@@ -96,7 +96,7 @@ def main(dataset_option: str, endpoint: str, batch_size=32):
     predicted_labels = [nli_label2int[predicted_label] for predicted_label in predicted_labels]
 
     # load metric and prepare print
-    metric = nlp.load_metric('xnli')
+    metric = datasets.load_metric('xnli')
     headers = ('', 'accuracy', '# samples')
     table = []
 

@@ -1,7 +1,6 @@
 from typing import Tuple, List, Any
 
-import nlp
-
+import datasets
 
 def flat_list(l: List[List[Any]]) -> List[Any]:
     return [_e for e in l for _e in e]
@@ -13,15 +12,15 @@ nli_labels = list(nli_label2int.keys())
 
 
 def read_train() -> Tuple[List[str], List[str], List[str], List[str]]:
-    return read_mnli(nlp.load_dataset('multi_nli')['train'])
+    return read_mnli(datasets.load_dataset('multi_nli')['train'])
 
 
 def read_dev() -> Tuple[List[str], List[str], List[str], List[str]]:
-    return read_mnli(nlp.load_dataset('multi_nli')['validation_matched'])
+    return read_mnli(datasets.load_dataset('multi_nli')['validation_matched'])
 
 
 def read_test() -> Tuple[List[str], List[str], List[str], List[str]]:
-    return read_xnli(nlp.load_dataset('xnli')['test'])
+    return read_xnli(datasets.load_dataset('xnli', 'all_languages')['test'])
 
 
 def read_mnli(dataset) -> Tuple[List[str], List[str], List[str], List[str]]:

@@ -4,6 +4,6 @@ scikit-learn==0.22.2
 numpy==1.18.2
 tqdm==4.43.0
 torch==1.4.0
-nlp==0.1.0
+datasets==1.0.2
 six==1.15.0
 tabulate==0.8.7
