@@ -101,13 +101,13 @@ def main(dataset_option: str, endpoint: str, batch_size=32):
     table = []
 
     # overall
-    table.append(('overall', metric.compute(predicted_labels, labels)['accuracy'], len(labels)))
+    table.append(('overall', metric.compute(predictions=predicted_labels, references=labels)['accuracy'], len(labels)))
 
     # per language
     for evaluation_language in sorted(set(languages)):
         evaluation_language_predicted_labels = [predicted_label for predicted_label, language in zip(predicted_labels, languages) if language == evaluation_language]
         evaluation_language_labels = [label for label, language in zip(labels, languages) if language == evaluation_language]
-        evaluation_language_accuracy = metric.compute(evaluation_language_predicted_labels, evaluation_language_labels)['accuracy']
+        evaluation_language_accuracy = metric.compute(predictions=evaluation_language_predicted_labels, references=evaluation_language_labels)['accuracy']
         table.append((evaluation_language, evaluation_language_accuracy, len(evaluation_language_labels)))
 
     # print
